@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About · OmsaiShop</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-left"><a class="brand" href="index.html"><img src="logo.svg" alt="OmsaiShop" style="height:28px;vertical-align:middle;margin-right:8px"> OmsaiShop</a></div>
+    <div class="nav-right">
+      <a href="index.html" class="btn">Home</a>
+      <a href="support.html" class="btn">Support</a>
+      <button id="themeToggle" class="btn" aria-label="Toggle dark mode">🌙</button>
+    </div>
+  </header>
+  <main class="container">
+    <h1>About OmsaiShop</h1>
+    <p>OmsaiShop is a small, independent store built with love. We curate fashionable essentials and practical gadgets that make daily life better—without heavy price tags.</p>
+
+    <h2>What we believe</h2>
+    <ul>
+      <li>Good design is simple and useful</li>
+      <li>Quality should be affordable</li>
+      <li>Support should be friendly and fast</li>
+    </ul>
+
+    <h2>Made by</h2>
+    <p>Sai Sunil Gawaskar — building delightful web experiences and products.</p>
+  </main>
+  <footer class="footer"><p>© <span id="year"></span> OmsaiShop · Made by Sai Sunil Gawaskar</p></footer>
+
+  <script type="module">
+    import { initTheme } from './js/theme.js';
+    document.getElementById('year').textContent = new Date().getFullYear();
+    initTheme();
+  </script>
+</body>
+</html>
+
+

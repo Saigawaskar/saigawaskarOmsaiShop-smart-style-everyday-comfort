@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer Support · OmsaiShop</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-left"><a class="brand" href="index.html"><img src="logo.svg" alt="OmsaiShop" style="height:28px;vertical-align:middle;margin-right:8px"> OmsaiShop</a></div>
+    <div class="nav-right">
+      <a href="index.html" class="btn">Home</a>
+      <button id="themeToggle" class="btn" aria-label="Toggle dark mode">🌙</button>
+    </div>
+  </header>
+  <main class="container">
+    <h1>Customer Support</h1>
+    <p>Need help with your order? We’re here 7 days a week.</p>
+    <ul>
+      <li><strong>Email</strong>: <a href="mailto:support@omsai.shop">support@omsai.shop</a></li>
+      <li><strong>Phone</strong>: <a href="tel:+919999999999">+91 99999 99999</a> (10am–7pm IST)</li>
+      <li><strong>WhatsApp</strong>: <a href="https://wa.me/919999999999">Message us on WhatsApp</a></li>
+    </ul>
+    <p>For returns and exchanges, include your order ID and a brief description.</p>
+  </main>
+  <footer class="footer"><p>© <span id="year"></span> OmsaiShop · Made by Sai Sunil Gawaskar</p></footer>
+
+  <script type="module">
+    import { initTheme } from './js/theme.js';
+    document.getElementById('year').textContent = new Date().getFullYear();
+    initTheme();
+  </script>
+</body>
+</html>
+
+

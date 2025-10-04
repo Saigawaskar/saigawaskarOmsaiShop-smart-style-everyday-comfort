@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Details · OmsaiShop</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-left"><a class="brand" href="index.html"><span class="logo-dot">🛍️</span> OmsaiShop</a></div>
+    <div class="nav-right">
+      <a href="index.html" class="btn">Home</a>
+      <button id="themeToggle" class="btn" aria-label="Toggle dark mode">🌙</button>
+    </div>
+  </header>
+  <main class="container">
+    <h1>Order Details</h1>
+    <div id="orderBox" class="cart-items" style="border:1px solid var(--border); border-radius:12px; padding:0.75rem;"></div>
+    <div class="cart-footer" style="margin-top:1rem;">
+      <div class="total">Grand Total: ₹<span id="orderTotal">0</span></div>
+      <a class="btn primary" href="index.html">Continue Shopping</a>
+    </div>
+  </main>
+  <footer class="footer"><p>© <span id="year"></span> OmsaiShop · Made by Sai Sunil Gawaskar</p></footer>
+
+  <script type="module">
+    import { initTheme } from './js/theme.js';
+    const yearEl = document.getElementById('year');
+    yearEl.textContent = new Date().getFullYear();
+    initTheme();
+
+    const order = JSON.parse(localStorage.getItem('shoplite_last_order') || 'null');
+    const box = document.getElementById('orderBox');
+    const totalEl = document.getElementById('orderTotal');
+    if (!order) {
+      box.innerHTML = '<p>No recent order found.</p>';
+    } else {
+      const header = document.createElement('div');
+      header.style.margin = '0 0 0.5rem 0';
+      header.innerHTML = `<strong>Order ID:</strong> ${order.id} · ${new Date(order.ts).toLocaleString()}`;
+      box.appendChild(header);
+      order.items.forEach(it => {
+        const row = document.createElement('div');
+        row.className = 'cart-item';
+        row.innerHTML = `
+          <img src="${it.image}" alt="${it.name}" />
+          <div class=\"meta\">
+            <div>${it.name}</div>
+            <div>Qty: ${it.quantity}</div>
+            <div class=\"price\">₹${(it.price * it.quantity).toFixed(2)}</div>
+          </div>`;
+        box.appendChild(row);
+      });
+      totalEl.textContent = order.total.toFixed(2);
+    }
+  </script>
+</body>
+</html>
+
+
